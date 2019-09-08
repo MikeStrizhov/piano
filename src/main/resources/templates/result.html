@@ -1,10 +1,41 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Result for search posts in Stackoverflow</title>
 </head>
 <body>
+
+<h3>Search posts in Stackoverflow</h3>
+<div>
+    <form action="/result">
+        Search posts using Stackoverflow api:  <input type="text" name="query" th:value="${searchString}"> <input type="submit" value="Search">
+    </form>
+</div>
+<br>
+<table border="1" class="table table-hover table-striped">
+    <thead>
+    <tr>
+        <th> title </th>
+        <th> date </th>
+        <th> author </th>
+        <th> answered </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${questionList.empty}">
+        <td colspan="3"> Tests not found </td>
+    </tr>
+    <tr th:each="question : ${questionList}">
+        <td><a th:href="${question.getLink()}" target="_blank"><span th:text="${question.getTitle()}"> title </span></a></td>
+        <td><span th:text="${question.getDate()}"> date </span></td>
+        <td><span th:text="${question.getOwner()}"> author </span></td>
+        <td><span th:text="${question.isIs_answered()}"> answered </span></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
