@@ -29,6 +29,7 @@ public class CustomQuestionListDeserializer extends StdDeserializer<List<Questio
         ObjectCodec codec = parser.getCodec();
         JsonNode rootNode = null;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        //we need set Timezone to UTC or else in different timezones will be different results
         simpleDateFormat.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
 
         try {
@@ -61,7 +62,7 @@ public class CustomQuestionListDeserializer extends StdDeserializer<List<Questio
 
             JsonNode isAnsweredNode = node.get("is_answered");
             boolean isAnswered = isAnsweredNode.asBoolean();
-            question.setIs_answered(isAnswered);
+            question.setIsAnswered(isAnswered);
 
             JsonNode linkNode = node.get("link");
             String link = linkNode.asText();

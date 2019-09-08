@@ -26,13 +26,13 @@
     </thead>
     <tbody>
     <tr th:if="${questionList.empty}">
-        <td colspan="3"> Tests not found </td>
+        <td colspan="4"> Questions not found </td>
     </tr>
-    <tr th:each="question : ${questionList}">
+    <tr th:each="question : ${questionList}"  th:class="${question.isAnswered()} ? 'table-success' : 'table-warning'">
         <td><a th:href="${question.getLink()}" target="_blank"><span th:text="${question.getTitle()}"> title </span></a></td>
         <td><span th:text="${question.getDate()}"> date </span></td>
         <td><span th:text="${question.getOwner()}"> author </span></td>
-        <td><span th:text="${question.isIs_answered()}"> answered </span></td>
+        <td><span th:text="${question.isAnswered()}"> answered </span></td>
     </tr>
     </tbody>
 </table>

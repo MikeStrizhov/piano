@@ -6,7 +6,7 @@ public class Question {
     private String date;
     private String title;
     private String owner;
-    private boolean is_answered;
+    private boolean answered;
     private String link;
 
     public Question(){}
@@ -35,12 +35,12 @@ public class Question {
         this.owner = owner;
     }
 
-    public boolean isIs_answered() {
-        return is_answered;
+    public boolean isAnswered() {
+        return answered;
     }
 
-    public void setIs_answered(boolean is_answered) {
-        this.is_answered = is_answered;
+    public void setIsAnswered(boolean is_answered) {
+        this.answered = is_answered;
     }
 
     public String getLink() {
@@ -57,7 +57,7 @@ public class Question {
                 "date='" + date + '\'' +
                 ", title='" + title + '\'' +
                 ", owner='" + owner + '\'' +
-                ", is_answered=" + is_answered +
+                ", answered=" + answered +
                 ", link='" + link + '\'' +
                 '}';
     }
@@ -67,7 +67,7 @@ public class Question {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Question question = (Question) o;
-        return is_answered == question.is_answered &&
+        return answered == question.answered &&
                 Objects.equals(date, question.date) &&
                 Objects.equals(title, question.title) &&
                 Objects.equals(owner, question.owner) &&
@@ -77,6 +77,6 @@ public class Question {
     @Override
     public int hashCode() {
 
-        return Objects.hash(date, title, owner, is_answered, link);
+        return Objects.hash(date, title, owner, answered, link);
     }
 }
