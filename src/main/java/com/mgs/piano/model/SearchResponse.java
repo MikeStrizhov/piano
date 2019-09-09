@@ -4,12 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.mgs.piano.model.jackson.CustomQuestionListDeserializer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 public class SearchResponse {
-    private List<Question> questionsList;
+    private List<Question> questionsList = new ArrayList<>();
+
+    @JsonProperty("has_more")
+    private boolean hasMore;
 
     public SearchResponse(){}
 
@@ -19,8 +23,17 @@ public class SearchResponse {
         return questionsList;
     }
 
+
     public void setQuestions(List<Question> questionsList) {
         this.questionsList = questionsList;
+    }
+
+    public boolean isHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
     }
 
     @Override
@@ -40,7 +53,8 @@ public class SearchResponse {
     @Override
     public String toString() {
         return "SearchResponse{" +
-                "questionsList=" + questionsList +
+                "hasMore=" + hasMore +
+                ", questionsList=" + questionsList +
                 '}';
     }
 }

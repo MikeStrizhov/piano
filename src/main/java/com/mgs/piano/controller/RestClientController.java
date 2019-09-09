@@ -28,10 +28,11 @@ public class RestClientController {
     @Value("${app.so.rest.path}")
     private String uriApi;
 
-    public List<Question> getPosts(String searchString) {
-        List<Question> result = new ArrayList<>();
+    public SearchResponse getPosts(String searchString, long pageId) {
+        SearchResponse result = new SearchResponse();
         Map<String, String> params = new HashMap<>();
         params.put("intitle", searchString);
+        params.put("page", Long.toString(pageId));
 
         String restStringResponse = restTemplate.getForObject(uriApi, String.class, params);
         logger.info(restStringResponse);
@@ -39,25 +40,12 @@ public class RestClientController {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
-            SearchResponse searchResponse = mapper.readValue(restStringResponse, SearchResponse.class);
-            result = searchResponse.getQuestions();
-            logger.info(searchResponse.toString());
+            result = mapper.readValue(restStringResponse, SearchResponse.class);
+            logger.info(result.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return result;
-    }
-
-    public RestTemplate getRestTemplate() {
-        return restTemplate;
-    }
-
-    public void setRestTemplate(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
-    public String getUriApi() {
-        return uriApi;
     }
 
     public void setUriApi(String uriApi) {

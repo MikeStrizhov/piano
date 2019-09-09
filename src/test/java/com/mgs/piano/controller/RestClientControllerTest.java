@@ -2,6 +2,7 @@ package com.mgs.piano.controller;
 
 import com.mgs.piano.controller.utils.JsonString;
 import com.mgs.piano.model.Question;
+import com.mgs.piano.model.SearchResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,8 +42,9 @@ public class RestClientControllerTest {
 
         Map<String, String> params = new HashMap<>();
         params.put("intitle", searchString);
+        params.put("page", "1");
 
-        String uri = "=http://api.stackexchange.com/2.2/search?order=desc&sort=votes&intitle={intitle}&site=stackoverflow";
+        String uri = "=http://api.stackexchange.com/2.2/search?page={page}&order=desc&sort=votes&intitle={intitle}&site=stackoverflow";
         restClientController.setUriApi(uri);
 
         //prepare mock
@@ -51,8 +53,8 @@ public class RestClientControllerTest {
                 .thenReturn(JsonString.JSON);
 
 
-        List<Question> result = restClientController.getPosts(searchString);
+        SearchResponse result = restClientController.getPosts(searchString,0);
 
-        Assert.assertEquals("user4315", result.get(0).getOwner());
+        Assert.assertEquals("user4315", result.getQuestions().get(0).getOwner());
     }
 }

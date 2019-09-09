@@ -36,6 +36,28 @@
     </tr>
     </tbody>
 </table>
-
+<!-- Questions pagination -->
+<nav aria-label="Pagination" th:if="${have_next_page or (curentPage!= null and curentPage gt 1)}">
+    <ul class="pagination justify-content-center font-weight-bold">
+        <li class="page-item" th:classappend="${curentPage lt 2} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/result(page=1, search=${searchString})}"
+               aria-label="Previous" title="Previous Page">First page
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${curentPage lt 2} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/result(page=${curentPage - 1}, search=${searchString})}"
+               aria-label="Previous" title="Previous Page">Previous
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${!have_next_page} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/result(page=${curentPage + 1}, search=${searchString})}"
+               aria-label="Next" title="Next Page">Next
+            </a>
+        </li>
+    </ul>
+</nav>
 </body>
 </html>
