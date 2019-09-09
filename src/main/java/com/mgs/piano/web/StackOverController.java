@@ -25,7 +25,7 @@ public class StackOverController {
     }
 
     @GetMapping("/result")
-    public String testRu1nList(@RequestParam(value = "query", defaultValue = "java") String searchString
+    public String resultsList(@RequestParam(value = "query", defaultValue = "java") String searchString
             , @RequestParam(value = "page", defaultValue = "1")
               @Min(value = 1L, message = "The value must be positive, not zero")long pageId
             , Model model){
