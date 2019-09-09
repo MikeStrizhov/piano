@@ -4,7 +4,7 @@
 Веб приложение, позволяющее отображать результаты поиска по сайту api.stackexchange.com, данные поиска получаем посредством rest запросов, отображаем с помощью spring web+thymeleaf.  
  
 Стартовая страница вебсервера http://localhost:8080/
-Ссылка на проет https://github.com/MikeStrizhov/piano 
+Ссылка на проект https://github.com/MikeStrizhov/piano 
 
 В проекте использовались 
 spring boot, spring web и rest template, thymeleaf и css стили bootstrap; для тестов JUnit, Mockito и WebMvcTest
