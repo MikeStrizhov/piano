@@ -13,17 +13,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.constraints.Min;
 import java.util.List;
 
+/**
+ * Веб контроллер
+ */
 @Controller
 public class StackOverController {
 
     @Autowired
     RestClientController restClientController;
 
+    /**Маппинг для статической страницы с текстом задания
+     * @param model модель MVC паттерна
+     * @return имя вида из MVC паттерна для отображения модели
+     */
     @GetMapping("/")
     public String root(Model model){
         return "index";
     }
 
+    /** обработка маппинга для основной страницы ч результатами поиска
+     * @param searchString поисковая строка
+     * @param pageId номер страницы в результатах поиска
+     * @param model модель MVC паттерна
+     * @return имя вида из MVC паттерна для отображения модели
+     */
     @GetMapping("/result")
     public String resultsList(@RequestParam(value = "query", defaultValue = "java") String searchString
             , @RequestParam(value = "page", defaultValue = "1")
@@ -38,10 +51,5 @@ public class StackOverController {
         model.addAttribute("curentPage", pageId);
 
         return "result";
-    }
-
-    @RequestMapping("/error1")
-    public void handleRequest() {
-        throw new RuntimeException("test exception");
     }
 }

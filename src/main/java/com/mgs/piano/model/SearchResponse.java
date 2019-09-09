@@ -9,9 +9,15 @@ import java.util.List;
 import java.util.Objects;
 
 
+/**
+ * Класс модели данных, содержащий в себе ответ сервера
+ */
 public class SearchResponse {
+
+    //Список найденных ответов
     private List<Question> questionsList = new ArrayList<>();
 
+    //поле ответа, вероятно означающее, что имеется следующая страница поиска при пагинации
     @JsonProperty("has_more")
     private boolean hasMore;
 

@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Класс, обеспечивающий десеарилизацию для jackson
+ */
 public class CustomQuestionListDeserializer extends StdDeserializer<List<Question>> {
     CustomQuestionListDeserializer(){
         this(null);
@@ -53,6 +56,7 @@ public class CustomQuestionListDeserializer extends StdDeserializer<List<Questio
 
             JsonNode titleNode = node.get("title");
             String title = titleNode.asText();
+            //преобразуем строку с названием в читаемый вид
             String parsedTitle = Jsoup.parse(title).text();
             question.setTitle(parsedTitle);
 

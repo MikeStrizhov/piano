@@ -2,6 +2,9 @@ package com.mgs.piano.model;
 
 import java.util.Objects;
 
+/**
+ * Сведения о найденном ответе
+ */
 public class Question {
     private String date;
     private String title;
@@ -76,7 +79,6 @@ public class Question {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(date, title, owner, answered, link);
     }
 }

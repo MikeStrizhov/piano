@@ -53,7 +53,7 @@ public class RestClientControllerTest {
                 .thenReturn(JsonString.JSON);
 
 
-        SearchResponse result = restClientController.getPosts(searchString,0);
+        SearchResponse result = restClientController.getPosts(searchString,1);
 
         Assert.assertEquals("user4315", result.getQuestions().get(0).getOwner());
     }

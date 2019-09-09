@@ -41,20 +41,20 @@
     <ul class="pagination justify-content-center font-weight-bold">
         <li class="page-item" th:classappend="${curentPage lt 2} ? 'disabled'">
             <a class="page-link"
-               th:href="@{/result(page=1, search=${searchString})}"
+               th:href="@{/result?page=1&query=__${#strings.replace(searchString,' ','+')}__}"
                aria-label="Previous" title="Previous Page">First page
             </a>
         </li>
         <li class="page-item" th:classappend="${curentPage lt 2} ? 'disabled'">
             <a class="page-link"
-               th:href="@{/result(page=${curentPage - 1}, search=${searchString})}"
+               th:href="@{/result?page=__${curentPage - 1}__&query=__${#strings.replace(searchString,' ','+')}__}"
                aria-label="Previous" title="Previous Page">Previous
             </a>
         </li>
         <li class="page-item" th:classappend="${!have_next_page} ? 'disabled'">
             <a class="page-link"
-               th:href="@{/result(page=${curentPage + 1}, search=${searchString})}"
-               aria-label="Next" title="Next Page">Next
+               th:href="@{/result?page=__${curentPage + 1}__&query=__${#strings.replace(searchString,' ','+')}__}"
+               aria-label="!!Next" title="Next Page">Next
             </a>
         </li>
     </ul>
