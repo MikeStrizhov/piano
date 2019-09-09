@@ -48,21 +48,11 @@
 			<version>1.11.3</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.3.3</version>
 		</dependency>
-
-<!--
-		<dependency>
-			<groupId>org.apache.directory.studio</groupId>
-			<artifactId>org.apache.commons.io</artifactId>
-			<version>${org.apache.commons.io.version}</version>
-		</dependency>
--->
-
 
 	</dependencies>
 
