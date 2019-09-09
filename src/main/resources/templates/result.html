@@ -25,7 +25,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${questionList.empty}">
+    <tr th:if="${questionList!=null and questionList.isEmpty()}">
         <td colspan="4"> Questions not found </td>
     </tr>
     <tr th:each="question : ${questionList}"  th:class="${question.isAnswered()} ? 'table-success' : 'table-warning'">
